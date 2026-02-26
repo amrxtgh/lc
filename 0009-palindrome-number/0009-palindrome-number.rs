@@ -3,8 +3,8 @@ impl Solution {
         let mut n = x;
         let mut reverse = 0;
         while n > 0 {
-            let m = n % 10; // calculating last number
-            reverse = reverse * 10 + m; 
+            //let m = n % 10;  calculating last number
+            reverse = reverse * 10 + n % 10; 
             n = n/10;
         }
         x == reverse
