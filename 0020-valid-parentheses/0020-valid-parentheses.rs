@@ -5,29 +5,19 @@ impl Solution {
         for c in s.chars() {
             if c == '(' || c == '{' || c == '[' {
                 stack.push(c);
-            }
-            else if c == ')' {
+            } else {
+                let expected = match c {
+                    ')' => '(',
+                    '}' => '{',
+                    ']' => '[',
+                    _ => continue,
+                };
                 if stack.is_empty() { return false; }
                 let top = stack.pop().unwrap();
-                if top != '(' {
+                if top != expected {
                     return false;
                 }
             }
-            else if c == '}' {
-                if stack.is_empty() { return false; }
-                let top = stack.pop().unwrap();
-                if top != '{' {
-                    return false;
-                }
-            }
-            else if c == ']' {
-                if stack.is_empty() { return false; }
-                let top = stack.pop().unwrap();
-                if top != '[' {
-                    return false;
-                }
-            }
-
         }
         stack.is_empty()
     }
