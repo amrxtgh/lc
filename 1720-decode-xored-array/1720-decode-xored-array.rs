@@ -5,10 +5,12 @@ impl Solution {
         let mut arr = Vec::new();
         arr.push(first);
 
-        for i in 0..n {
-            arr.push(encoded[i] ^ arr.last().unwrap());
-            // arr[i + 1] = encoded[i] ^ arr[i];
-        }
+        encoded
+        .iter()
+        .for_each(|x| {
+            arr.push(x ^ arr.last().unwrap())
+        });
+
         arr
     }
 }
